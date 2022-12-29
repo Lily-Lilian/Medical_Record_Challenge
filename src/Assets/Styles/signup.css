@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.title {
+  margin: 60px auto 10px auto;
+}
+.subtitle {
+  margin-bottom: 20px;
+}
+.heading {
+  /* position: absolute;
+	top: 18%;
+	left: 40%; */
+  margin-bottom: 30px;
+  text-align: center !important;
+}
+.link {
+  color: #49b2d5;
+  font-weight: bold;
+  padding-left: 4px;
+}
+.gender {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5px 10px 12px;
+  gap: 10px;
+}
+.gender input {
+  margin-right: 5px;
+}
+.gender_select,
+.role_select {
+  display: block;
+  max-width: 100%;
+  width: 97.5%;
+  padding: 10px;
+  margin: 10px;
+  height: 50px;
+  border: 1px solid #ccc;
+}
+.container {
+  width: 100%;
+  min-height: 120vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* background-color: var(--background-color); */
+}
+.wrapper {
+  position: relative;
+  min-width: 850px;
+  min-height: 700px;
+  padding: 80px;
+  top: 40%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.names {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 12px 0;
+}
+.input {
+  display: block;
+  max-width: 100%;
+  width: 94%;
+  padding: 10px;
+  margin: 10px;
+  height: 30px;
+  border: 1px solid #ccc;
+}
+.css-1fdsijx-ValueContainer {
+  height: 50px !important;
+  width: 90% !important;
+  cursor: pointer;
+}
+.submit {
+  position: relative;
+  max-width: 100%;
+  width: 98%;
+  margin: 20px 0 5px 8px;
+}
+.country {
+  margin-bottom: 12px;
+  margin-left: 10px;
+  width: 98%;
+}
+.country-label {
+  margin: 2px 0 2px 5px !important;
+}
+.gender-label {
+  margin: 12px 0px 2px 12px;
+}
+.names .input {
+  width: 50%;
+}
+.gender label {
+  border: 1px solid #ccc;
+  padding: 17px;
+  width: 33%;
+}
