@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useToasts } from "react-toast-notifications";
 import Select from "react-select";
 import axios from "axios";
 import countryList from "react-select-country-list";
@@ -8,8 +8,8 @@ import "../Assets/Styles/signup.css";
 import { MdLockOutline } from "react-icons/md";
 
 export default function SignupForm() {
+  const { addToast } = useToasts();
   const [selected, setSelected] = useState("");
-
   const selectDropdown = (e) => {
     const val = e.target.value;
     setSelected(val);
@@ -35,27 +35,17 @@ export default function SignupForm() {
         role: selected,
       })
       .then(function (response) {
-        toast.success(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        addToast(response.data.message, {
+          autoDismiss: true,
+          appearance: "success",
         });
         console.log(response);
         navigate("/login");
       })
       .catch(function (error) {
-        toast.error(error.response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        addToast(error.response.data.message, {
+          autoDismiss: true,
+          appearance: "error",
         });
         console.log(error.response);
       });

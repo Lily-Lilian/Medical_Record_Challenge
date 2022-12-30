@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import './Assets/Styles/index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+import "./Assets/Styles/index.css";
+import App from "./App";
+import { ToastProvider } from "react-toast-notifications";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>
+ReactDOM.render(
+  <BrowserRouter>
+    <ToastProvider>
+      <App />
+    </ToastProvider>
+  </BrowserRouter>,
+  document.getElementById("root")
 );

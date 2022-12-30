@@ -1,18 +1,16 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { useToasts } from "react-toast-notifications";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import "../Assets/Styles/dashboard.css";
 
 export default function Dashboard() {
+  const { addToast } = useToasts();
   const navigate = useNavigate();
-
   const user = localStorage.getItem("user") && localStorage.getItem("user");
-
   const role = user === null ? "" : JSON.parse(user).role;
   const Role = role && role.toUpperCase();
-
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
@@ -22,27 +20,17 @@ export default function Dashboard() {
     axios
       .get(`http://localhost:5500/api/v1/${Role}`)
       .then(function (response) {
-        toast.success(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        addToast(response.data.message, {
+          autoDismiss: true,
+          appearance: "success",
         });
         setDatas(response.data.data);
         console.log("datassss===>>>", datas);
       })
       .catch(function (error) {
-        toast.error(error.response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        addToast(error.response.data.message, {
+          autoDismiss: true,
+          appearance: "error",
         });
         console.log(error.response);
       });

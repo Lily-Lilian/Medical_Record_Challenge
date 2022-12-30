@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useToasts } from "react-toast-notifications";
 import "../Assets/Styles/login.css";
 
 export default function Signup() {
+  const { addToast } = useToasts();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -27,28 +28,18 @@ export default function Signup() {
         ...values,
       })
       .then(function (response) {
-        toast.success(response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        addToast(response.data.message, {
+          autoDismiss: true,
+          appearance: "success",
         });
         console.log("datassss===>>>", response.data.data);
         localStorage.setItem("user", JSON.stringify(response.data.data));
         navigate("/dashboard");
       })
       .catch(function (error) {
-        toast.error(error.response.data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+        addToast(error.response.data.message, {
+          autoDismiss: true,
+          appearance: "error",
         });
         console.log(error.response);
       });
